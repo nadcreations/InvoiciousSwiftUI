@@ -50,10 +50,12 @@ struct SignInView: View {
                             Circle()
                                 .fill(DesignSystem.Colors.primaryGradient)
                                 .frame(width: 120, height: 120)
-                            
-                            Image(systemName: "doc.text.fill")
-                                .font(.system(size: 50, weight: .medium))
-                                .foregroundColor(.white)
+
+                            Image("AppIcon")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 70, height: 70)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
                         }
                         
                         VStack(spacing: DesignSystem.Spacing.sm) {
@@ -209,10 +211,12 @@ struct SignUpView: View {
                             Circle()
                                 .fill(DesignSystem.Colors.primaryGradient)
                                 .frame(width: 100, height: 100)
-                            
-                            Image(systemName: "person.badge.plus.fill")
-                                .font(.system(size: 40, weight: .medium))
-                                .foregroundColor(.white)
+
+                            Image("AppIcon")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 60, height: 60)
+                                .clipShape(RoundedRectangle(cornerRadius: 14))
                         }
                         
                         VStack(spacing: DesignSystem.Spacing.sm) {

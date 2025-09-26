@@ -4137,7 +4137,7 @@ struct OnboardingContent {
             headline: "Get Paid Faster",
             description: "Stop waiting 60+ days for payments. Professional invoices that get results and help you maintain healthy cash flow.",
             benefit: "Average users get paid 40% faster",
-            imageName: "AppIcon",
+            imageName: "dollarsign.circle.fill",
             backgroundColor: LinearGradient(
                 colors: [Color(red: 0.2, green: 0.6, blue: 0.9), Color(red: 0.1, green: 0.4, blue: 0.8)],
                 startPoint: .topLeading,
@@ -4696,9 +4696,11 @@ struct SignInUpView: View {
                                 .fill(DesignSystem.Colors.primaryGradient)
                                 .frame(width: 120, height: 120)
 
-                            Image(systemName: isSignUp ? "person.badge.plus.fill" : "doc.text.fill")
-                                .font(.system(size: 50, weight: .medium))
-                                .foregroundColor(.white)
+                            Image("AppIcon")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 70, height: 70)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
                         }
 
                         VStack(spacing: DesignSystem.Spacing.sm) {
