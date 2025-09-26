@@ -46,6 +46,22 @@ class SubscriptionManager: NSObject, ObservableObject {
         }
     }
 
+    // MARK: - Force Refresh Subscription Status
+    func refreshSubscriptionStatus() async {
+        do {
+            let customerInfo = try await Purchases.shared.customerInfo()
+            await MainActor.run {
+                self.isSubscribed = customerInfo.entitlements[Self.premiumEntitlementID]?.isActive == true
+            }
+            print("✅ Subscription Status Refreshed: \(isSubscribed ? "Active" : "Inactive")")
+        } catch {
+            print("❌ Error refreshing subscription status: \(error.localizedDescription)")
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
+
     // MARK: - Load Offerings
     func loadOfferings() {
         Task {
@@ -87,6 +103,9 @@ class SubscriptionManager: NSObject, ObservableObject {
                 self.isSubscribed = isActive
                 self.isLoading = false
             }
+
+            // Force refresh to ensure all UI updates
+            await refreshSubscriptionStatus()
 
             print("✅ Purchase successful: \(isActive)")
             return isActive

@@ -312,6 +312,7 @@ struct PaywallPurchaseButton: View {
     let selectedPackage: Package?
     let subscriptionManager: SubscriptionManager
     let showFreeTrial: Bool
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         Button(action: purchaseSelected) {
@@ -361,7 +362,13 @@ struct PaywallPurchaseButton: View {
 
         Task {
             do {
-                _ = try await subscriptionManager.purchaseProduct(package)
+                let success = try await subscriptionManager.purchaseProduct(package)
+                if success {
+                    // Dismiss paywall on successful purchase
+                    await MainActor.run {
+                        dismiss()
+                    }
+                }
             } catch {
                 print("Purchase failed: \(error)")
             }

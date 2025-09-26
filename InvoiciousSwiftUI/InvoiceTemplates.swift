@@ -230,6 +230,9 @@ struct InvoiceTemplateSelectionView: View {
         .sheet(isPresented: $showingPaywall) {
             PaywallView()
         }
+        .onAppear {
+            subscriptionManager.checkSubscriptionStatus()
+        }
     }
 }
 
@@ -317,7 +320,7 @@ struct TemplateCard: View {
                         onSelect()
                     }
                 }) {
-                    Text(template.isPremium && !subscriptionManager.hasAccess(to: .advancedTemplates) ? "Upgrade" : "Select")
+                    Text(template.isPremium && !subscriptionManager.hasAccess(to: .advancedTemplates) ? "Upgrade" : (isSelected ? "Selected" : "Select"))
                         .font(DesignSystem.Typography.caption1)
                         .fontWeight(.semibold)
                 }
@@ -329,8 +332,6 @@ struct TemplateCard: View {
                     RoundedRectangle(cornerRadius: DesignSystem.CornerRadius.sm)
                         .fill(isSelected ? template.primaryColor : template.primaryColor.opacity(0.6))
                 )
-                .disabled(isSelected)
-                .opacity(isSelected ? 0.7 : 1.0)
             }
         }
         .modernCard(elevation: isSelected ? 2 : 1)
