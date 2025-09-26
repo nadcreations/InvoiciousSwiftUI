@@ -2608,7 +2608,7 @@ struct AboutView: View {
                                 .fill(DesignSystem.Colors.primaryGradient)
                                 .frame(width: 100, height: 100)
                             
-                            Image("AppIcon")
+                            Image("AppLogo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 60, height: 60)
@@ -4137,7 +4137,7 @@ struct OnboardingContent {
             headline: "Get Paid Faster",
             description: "Stop waiting 60+ days for payments. Professional invoices that get results and help you maintain healthy cash flow.",
             benefit: "Average users get paid 40% faster",
-            imageName: "dollarsign.circle.fill",
+            imageName: "AppLogo",
             backgroundColor: LinearGradient(
                 colors: [Color(red: 0.2, green: 0.6, blue: 0.9), Color(red: 0.1, green: 0.4, blue: 0.8)],
                 startPoint: .topLeading,
@@ -4346,8 +4346,8 @@ struct OnboardingPageView: View {
                     .scaleEffect(animate ? 1.0 : 0.8)
                     .opacity(animate ? 1.0 : 0.0)
 
-                if page.imageName == "AppIcon" {
-                    Image("AppIcon")
+                if page.imageName == "AppLogo" {
+                    Image("AppLogo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 60)
@@ -4696,7 +4696,7 @@ struct SignInUpView: View {
                                 .fill(DesignSystem.Colors.primaryGradient)
                                 .frame(width: 120, height: 120)
 
-                            Image("AppIcon")
+                            Image("AppLogo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 70, height: 70)

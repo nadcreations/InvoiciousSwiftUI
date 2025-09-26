@@ -51,7 +51,7 @@ struct SignInView: View {
                                 .fill(DesignSystem.Colors.primaryGradient)
                                 .frame(width: 120, height: 120)
 
-                            Image("AppIcon")
+                            Image("AppLogo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 70, height: 70)
@@ -212,7 +212,7 @@ struct SignUpView: View {
                                 .fill(DesignSystem.Colors.primaryGradient)
                                 .frame(width: 100, height: 100)
 
-                            Image("AppIcon")
+                            Image("AppLogo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 60, height: 60)
